@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gao.mygao.mapper.UserMapper">
+    <select id="getAll" resultType="com.gao.mygao.pojo.User">
+        select * from my_user;
+    </select>
+
+    <select id="getName" resultType="String">
+        select nickname from my_user;
+    </select>
+
+    <select id="getPasswordByUser" resultType="String">
+        select password from my_user where user = #{username};
+    </select>
+
+    <insert id="addUser" parameterType="com.gao.mygao.pojo.User">
+        insert into my_user (nickname, user, password, data) VALUES (#{nickname}, #{user}, #{password}, #{data});
+    </insert>
+
+    <select id="findOnlyUser" resultType="String">
+        select user from my_user where user = #{username};
+    </select>
+
+</mapper>
